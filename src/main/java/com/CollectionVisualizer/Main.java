@@ -23,5 +23,7 @@ public class Main {
         f.setSize(new Dimension(myPicture.getWidth(), myPicture.getHeight()));
         f.add(jPanel);
         f.setVisible(true);
+
+        f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 }
