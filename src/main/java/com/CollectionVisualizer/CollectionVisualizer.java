@@ -24,6 +24,7 @@ public class CollectionVisualizer <T>{
             jTextAreas.get(length).setLineWrap(true);
             jTextAreas.get(length).setWrapStyleWord(true);
             jTextAreas.get(length).setFont(fontUsed);
+            jTextAreas.get(length).setEditable(false);
             length++;
         }
         //Create a new JPanel using the GridLayout Created earlier

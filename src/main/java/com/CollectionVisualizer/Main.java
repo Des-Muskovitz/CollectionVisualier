@@ -5,6 +5,7 @@ import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
 
 
 public class Main {
@@ -69,13 +70,17 @@ public class Main {
 
         Student[] students = new Student[] {new Student(1, "Sam", "123 home", new int[] {1,2,3,4,5})};
 
+        Converter converter = new Converter();
+
+        Map<Integer, String> testMap = converter.converter(test);
+
 
         //Create GridLayout with maximum Columns of 2 and no max row size
 
         CollectionVisualizer visualizer = new CollectionVisualizer();
 
         List<Student> list = Arrays.asList(students);
-        visualizer.displayArrayList(HEIGHT_OF_CELL, WIDTH_OF_CELL, FONT_USED, list);
+        visualizer.displayArrayList(HEIGHT_OF_CELL, WIDTH_OF_CELL, FONT_USED, test);
     }
 
 
