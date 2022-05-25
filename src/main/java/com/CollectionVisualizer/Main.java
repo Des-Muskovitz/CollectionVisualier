@@ -2,9 +2,10 @@ package main.java.com.CollectionVisualizer;
 
 
 import java.awt.*;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
-import javax.swing.*;
+
 
 public class Main {
 
@@ -62,41 +63,20 @@ public class Main {
         test.add("test");
         test.add("What happens if I wrap around text, like what happens when this text is too long to fit in a single cell?");
 
+
+        String[] stringArray = new String[] {"Hello", "World", "All Strings Showing"};
+        Double[] ints = new Double[] {1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,90.0};
+
+        Student[] students = new Student[] {new Student(1, "Sam", "123 home", new int[] {1,2,3,4,5})};
+
+
         //Create GridLayout with maximum Columns of 2 and no max row size
-        GridLayout gridLayout = new GridLayout(0, 2);
 
-        //Create an ArrayList of JTextArea's and set all properties of them at creation
-        List<JTextArea> jTextAreas = new ArrayList<>();
-        for(int i = 0; i < test.size(); i++){
-            jTextAreas.add(i, new JTextArea());
-            jTextAreas.get(i).setText(test.get(i));
-            jTextAreas.get(i).setLineWrap(true);
-            jTextAreas.get(i).setWrapStyleWord(true);
-            jTextAreas.get(i).setFont(FONT_USED);
-        }
+        CollectionVisualizer visualizer = new CollectionVisualizer();
 
-        //Create a new JPanel using the GridLayout Created earlier
-        JPanel jPanel = new JPanel(gridLayout);
-
-
-        //Insert headers into above each Index and Each Value
-        jPanel.add(new JTextArea("Indexes"));
-        jPanel.add(new JTextArea("Values"));
-
-        //Iterate through Each created JTextArea and add it into the JPanel
-        for(int i = 0; i < jTextAreas.size(); i++){
-            jPanel.add(new JTextArea(Integer.toString(i)));
-            jPanel.add(jTextAreas.get(i));
-        }
-
-        //create the JFrame for displaying data
-        JFrame frame = new JFrame();
-
-        //Set size and default operation for JFrame, and Add jPanel to JFrame
-        frame.add(jPanel);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(new Dimension(WIDTH_OF_CELL * test.size(), HEIGHT_OF_CELL * test.size()));
-        //Display Frame
-        frame.setVisible(true);
+        List<Student> list = Arrays.asList(students);
+        visualizer.displayArrayList(HEIGHT_OF_CELL, WIDTH_OF_CELL, FONT_USED, list);
     }
+
+
 }
