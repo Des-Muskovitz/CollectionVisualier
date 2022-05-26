@@ -13,19 +13,26 @@ public class CollectionVisualizer <T>{
 
     private String pathToSaveImages;
     private String fileType;
+    private String fileName;
+    private String fullFilePath;
+    private String directoryName;
     final private static int WIDTH_OF_CELL = 500;
     final private static int HEIGHT_OF_CELL = 500;
 
     //Constructor with path to save images
-    public CollectionVisualizer(String pathToSaveImages, String fileType) {
+    public CollectionVisualizer(String pathToSaveImages, String fileType, String fileName) {
         this.pathToSaveImages = pathToSaveImages;
         this.fileType = fileType;
+        this.fileName = fileName;
+        this.directoryName = this.pathToSaveImages + "\\" + this.fileName;
+        this.fullFilePath = this.pathToSaveImages + "\\" + this.fileName + "." + this.fileType;
     }
 
     //constructor without path to save images
     public CollectionVisualizer(){
         this.pathToSaveImages = null;
         this.fileType = null;
+        this.fileName = null;
     }
 
 
@@ -115,17 +122,12 @@ public class CollectionVisualizer <T>{
         //Display Frame
         frame.setVisible(true);
 
-        System.out.println(saveImage);
-        System.out.println(this.pathToSaveImages);
-
         if(saveImage){
             BufferedImage collection = new BufferedImage(frame.getWidth(), frame.getHeight(), BufferedImage.TYPE_INT_RGB);
             Graphics2D graphics2D = collection.createGraphics();
             frame.paint(graphics2D);
             try {
-                File file = new File(this.pathToSaveImages);
-                //file.getParentFile().mkdir();
-                ImageIO.write(collection, fileType, file);
+                ImageIO.write(collection, fileType, new File(fullFilePath));
             } catch (Exception exception){
                 System.out.println(exception.getMessage());
             }

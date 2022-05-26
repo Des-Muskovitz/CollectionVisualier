@@ -39,7 +39,7 @@ public class Main {
         //Create GridLayout with maximum Columns of 2 and no max row size
 
         CollectionVisualizer visualizerNoImage = new CollectionVisualizer();
-        CollectionVisualizer visualizerWithImage = new CollectionVisualizer("C:\\Users\\Student\\Desktop\\Collection.png", "png");
+        CollectionVisualizer visualizerWithImage = new CollectionVisualizer("C:\\Users\\Student\\Desktop", "png", "Collection");
 
         List<Student> list = Arrays.asList(students);
         visualizerWithImage.displayCollection(FONT_USED, students);
