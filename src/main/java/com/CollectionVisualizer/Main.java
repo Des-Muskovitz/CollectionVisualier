@@ -73,6 +73,7 @@ public class Main {
         Converter converter = new Converter();
 
         Map<Integer, String> testMap = converter.converter(test);
+        Map<Integer, String> testMap2 = converter.converter(stringArray);
 
 
         //Create GridLayout with maximum Columns of 2 and no max row size
@@ -80,7 +81,7 @@ public class Main {
         CollectionVisualizer visualizer = new CollectionVisualizer();
 
         List<Student> list = Arrays.asList(students);
-        visualizer.displayArrayList(HEIGHT_OF_CELL, WIDTH_OF_CELL, FONT_USED, test);
+        visualizer.displayCollection(HEIGHT_OF_CELL, WIDTH_OF_CELL, FONT_USED, test);
     }
 
 

@@ -2,25 +2,39 @@ package main.java.com.CollectionVisualizer;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.*;
 import java.util.List;
 
 public class CollectionVisualizer <T>{
 
-    public void displayArrayList(int heightOfCell, int widthOfCell, Font fontUsed, Iterable<T> list) {
+    private Converter converter = new Converter();
 
-        Iterator<T> iterator = list.iterator();
+    public void displayCollection(int heightOfCell, int widthOfCell, Font fontUsed, Iterable<T> list){
+        Map<T, T> passedList = converter.converter(list);
+        displayArrayList(heightOfCell, widthOfCell, fontUsed, passedList);
+    }
+
+    public void displayCollection(int heightOfCell, int widthOfCell, Font fontUsed, Object[] array){
+        Map<T, T> passedArray = converter.converter(List.of(array));
+        displayArrayList(heightOfCell, widthOfCell, fontUsed, passedArray);
+    }
+
+    public void displayCollection(int heightOfCell, int widthOfCell, Font fontUsed, Map<T,T> map){
+        displayArrayList(heightOfCell, widthOfCell, fontUsed, map);
+    }
+
+    private void displayArrayList(int heightOfCell, int widthOfCell, Font fontUsed, Map<T, T> map) {
+
         GridLayout gridLayout = new GridLayout(0, 2);
 
         //Create an ArrayList of JTextArea's and set all properties of them at creation
         List<JTextArea> jTextAreas = new ArrayList<>();
 
         int length = 0;
-        while(iterator.hasNext()){
-            T value = iterator.next();
+        Set<T> keySet = map.keySet();
+        for(T key : keySet){
             jTextAreas.add(length, new JTextArea());
-            jTextAreas.get(length).setText(value.toString());
+            jTextAreas.get(length).setText(map.get(key).toString());
             jTextAreas.get(length).setLineWrap(true);
             jTextAreas.get(length).setWrapStyleWord(true);
             jTextAreas.get(length).setFont(fontUsed);
