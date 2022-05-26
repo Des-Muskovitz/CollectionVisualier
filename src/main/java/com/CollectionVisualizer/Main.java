@@ -2,57 +2,17 @@ package main.java.com.CollectionVisualizer;
 
 
 import java.awt.*;
-import java.util.Arrays;
+import java.io.IOException;
+import java.util.*;
 import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
 
 
 public class Main {
 
-    public static void main(String args[]){
-//        final int WIDTH_OF_CELL = 100;
-//        final int HEIGHT_OF_CELL = 200;
-//        FontMetrics fontMetrics;
-//
-//        String imagePath = "src\\main\\java\\com\\CollectionVisualizer\\2.png";
-//        BufferedImage myPicture = ImageIO.read(new File(imagePath));
-//
-//        List<String> test = new ArrayList<>();
-//        test.add("Hello");
-//        test.add("World");
-//        test.add("This is a proof of concept");
-//
-//        Graphics2D g = (Graphics2D) myPicture.getGraphics();
-//        g.setColor(Color.WHITE);
-//
-//        g.fillRect(0,0,WIDTH_OF_CELL * test.size(), HEIGHT_OF_CELL * test.size());
-//        g.setColor(Color.RED);
-//        g.setFont(Font.getFont(Font.MONOSPACED));
-//        g.drawString("Hello World", 5, 5);
-//        for(int i = 0; i < test.size(); i++){
-//            fontMetrics = g.getFontMetrics();
-//            int x = (WIDTH_OF_CELL * (i + 1) - fontMetrics.stringWidth(test.get(i)));
-//            int y = (HEIGHT_OF_CELL * (i + 1) - fontMetrics.getHeight());
-//            g.drawString(test.get(i), x, y);
-//        }
-//
-//
-//
-//        JLabel picLabel = new JLabel(new ImageIcon(myPicture));
-//
-//        JPanel jPanel = new JPanel();
-//        jPanel.add(picLabel);
-//
-//        JFrame f = new JFrame();
-//        f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-//        f.setSize(new Dimension(WIDTH_OF_CELL * test.size(), HEIGHT_OF_CELL * test.size()));
-//        f.add(jPanel);
-//        f.setVisible(true);
-
+    public static void main(String args[]) throws IOException {
         //Set default Size of cells
-        final int HEIGHT_OF_CELL = 75;
-        final int WIDTH_OF_CELL = 150;
+        final int HEIGHT_OF_CELL = 250;
+        final int WIDTH_OF_CELL = 250;
 
         final Font FONT_USED = Font.getFont(Font.MONOSPACED); //Set Default Font
 
@@ -78,10 +38,11 @@ public class Main {
 
         //Create GridLayout with maximum Columns of 2 and no max row size
 
-        CollectionVisualizer visualizer = new CollectionVisualizer();
+        CollectionVisualizer visualizerNoImage = new CollectionVisualizer();
+        CollectionVisualizer visualizerWithImage = new CollectionVisualizer("C:\\Users\\Student\\Desktop\\Collection.png", "png");
 
         List<Student> list = Arrays.asList(students);
-        visualizer.displayCollection(HEIGHT_OF_CELL, WIDTH_OF_CELL, FONT_USED, test);
+        visualizerWithImage.displayCollection(FONT_USED, students);
     }
 
 
