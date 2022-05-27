@@ -1,4 +1,4 @@
-package main.java.com.CollectionVisualizer;
+package com.colvis;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -6,8 +6,10 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.List;
+import java.time.LocalDateTime;
 
 public class CollectionVisualizer <T>{
 
@@ -25,7 +27,7 @@ public class CollectionVisualizer <T>{
         this.fileType = fileType;
         this.fileName = fileName;
         this.directoryName = this.pathToSaveImages + "\\" + this.fileName;
-        this.fullFilePath = this.pathToSaveImages + "\\" + this.fileName + "." + this.fileType;
+        this.fullFilePath = this.directoryName + "\\" + this.fileName + "." + this.fileType;
     }
 
     //constructor without path to save images
@@ -33,6 +35,11 @@ public class CollectionVisualizer <T>{
         this.pathToSaveImages = null;
         this.fileType = null;
         this.fileName = null;
+    }
+
+    public String getFullFilePath(){
+        LocalDateTime localDateTime = LocalDateTime.now();
+        return this.directoryName + "\\" + this.fileName + "_" + localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm")) + "." + this.fileType;
     }
 
 
@@ -127,7 +134,10 @@ public class CollectionVisualizer <T>{
             Graphics2D graphics2D = collection.createGraphics();
             frame.paint(graphics2D);
             try {
-                ImageIO.write(collection, fileType, new File(fullFilePath));
+                if(!new File(this.directoryName).isDirectory()){
+                    System.out.println(new File(this.directoryName).mkdir());
+                }
+                ImageIO.write(collection, fileType, new File(this.getFullFilePath()));
             } catch (Exception exception){
                 System.out.println(exception.getMessage());
             }

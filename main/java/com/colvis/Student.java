@@ -1,4 +1,4 @@
-package main.java.com.CollectionVisualizer;
+package com.colvis;
 
 import java.util.Arrays;
 
