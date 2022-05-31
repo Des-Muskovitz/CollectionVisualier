@@ -26,7 +26,7 @@ public class Main {
 
 
         String[] stringArray = new String[] {"Hello", "World", "All Strings Showing"};
-        Double[] ints = new Double[] {1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,90.0};
+        Double[] ints = new Double[] {1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,90.0,100.0,200.0,300.0,400.0,500.0,600.0,700.0,800.0, 900.0, 1000.0};
 
         Student[] students = new Student[] {new Student(1, "Sam", "123 home", new int[] {1,2,3,4,5})};
 
@@ -35,11 +35,20 @@ public class Main {
         Map<Integer, String> testMap = converter.converter(test);
         Map<Integer, String> testMap2 = converter.converter(stringArray);
 
+        List<Integer> finalTest = new ArrayList<>();
+        for(int i = 0; i < 250; i++){
+            finalTest.add(i);
+        }
+
 
         //Create GridLayout with maximum Columns of 2 and no max row size
 
         CollectionVisualizer visualizerNoImage = new CollectionVisualizer();
         CollectionVisualizer visualizerWithImage = new CollectionVisualizer("C:\\Users\\Student\\Desktop", "png", "Collection");
+
+
+        CollectionVisualizer.setBorderSize(5);
+        CollectionVisualizer.setColor(Color.GRAY);
 
         List<Student> list = Arrays.asList(students);
         visualizerWithImage.displayCollection(FONT_USED, students);
